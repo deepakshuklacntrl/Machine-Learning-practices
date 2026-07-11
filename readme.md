@@ -1,63 +1,63 @@
-### Assignment no-13- Data Gathering,preproccesing & EDA
-- This assignment contains multiple task tp practice data gathering, preprocessing, cleaning and exploratory data analysis (EDA) using python,pandas,Numpy,matplotlib,and seaborn.
+### :- Assignment-14 Feature Engineering, Encoding, Scaling & Pipeline 
+- This assignment covers Feature engineering, encoding, Scaling, and ML pipeline using (pandas,numpy,scikit-learn).
+- Each task builds steps by steps toword creating & complete ML workflow.
 
-## PART-1 Data Gathering
-# Task-1:- Load data from CSV
-- Loaded a kaggle dataset('International_Education_Costs.csv').
-- Printed shape,columns,first 5 rows,and basic preprocessing.
+## PART-1 Feature Engineering
+# Task:-1 Creating New Features
+- Data set used (train.csv,test.csv)
+- Picked up 2 existing columns(sibsp and parch) from the dataset and added this with single column Family Size.
+- generates the function to add the new column in the data set(Family Type).
+added some ner features like individual fare,family size,Name Prifix
 
-# Task-2:- Load data from JSON
-- downLoaded the JSON file from kaggle.
-- Loaded using pd.read_json('iris.json').
-- Converted dataset to DataFrame, and displays.
+# Task:-2 handling data & Text Features
+- - There is no date column in this data set, so i have skipped this
+- but i have tried to create a new features text_length, and word_count
 
-# Task-3:- Load data from SQL
-- Downloaded Xampp from the sources.
-- Downloaded mysql in my envoirnment using pip install mysql.connector.
-- Loaded data using mysql.connector.connect.
-- Inserted records,and read into pd.read_sql_querry.
+## PART-2 Feature Encoding
+# Task:-3 One Hot Encoding
+- Identified categorical columns and convert it to nominal_data
+- used pd.get_dummies()
+displayed the transformed DataFrame
 
-# Task-4:- API mini Project(TMDB)
-- i have tried to create account in tmdb but it is not responded.
-- But i imported  api from rapidapi.
-- i have printed(response) but, it gave the respone [403].
+# Task:-4 Column Transformer
+- 1. Seperates- Numerical & categorical features
+- impoerted remainder from math
+- used columntransformer----> applied onehotencoder to categorical columns
+- Pass numerical column unchanged.
+Fitted and transform dataset.
 
-## PART-2 Data preprocessing & Cleaning
-# Task-5:- Understanding the data
-- check shape.
-- data types.
-- Checks Numerical/Categorical columns,and missing values.
+## PART 3-Feature Scaling
+# Task:-5 Standardization(StandardScaler)
+- Applied StandardScaler on numerical features.
+- Explained----> mean=0, and Standard deviation=1
 
-# Task-6:- Data Cleaning
-- Handled missing values but not found any missing values,and duplicates in the dataset.
-- Rename the column name and fixes the data types.
+# Task:- Normalisation(MinMaxScaler)
+- Applied MINMaxScaler on numerical features.
+- Valued scaled between 0 to 1.
+- Compare results with StandardScaler.
 
-# Task-7:- Feature Preparation
-- Encoded the dataset, using Label encoder.
-- Separated features and targets.
+## PART-4 Building ML pipeline
+# Task:-7- Preprocessing Pipeline
+- Created seperate pipelines.
+- Numerical-->Scaling-->Numeric_pipeline
+- Categorical---> OneHotEncoder-->Ordinal_pipeline
+- Combined using ColumnTransformers.
 
-## PART-3 Exploratory Data Analysis (EDA)
-# Task-8:- Univariate Analysis
-- Plotted distribution of numerical column using Histplot, and kdeplot.
-- Plotted count plot for categorical column.
-- Plotted box plot for outliers.
+# Task:-8 Full sciket-learn Pipeline
+- Data->Encoded->Scaled-> and created model
+- Uses simple model LogisticRegression
+- Split data into train-test sets
+- Fitted pipeline on training data
+- Predicted the test data, accuracy appears approx 91%.
 
-# Task-9:- Bivariate Analysis
-- Visualize numerical numerical column using scatter plot.
-- Visualize correlation using heatmap.
-- Plotted bar plot , and box plot for categorical numerical columns.
-
-# Task-10:- Insights & Observations
-- All insights and observations are written.
-- These insights and observations are written in the form of given patterns---> patterns,outliers,relationships,and data quality.
-- All ponts are written in markdown cells only.
-
-## How to run
-- Install dependencies---> Pandas,Numpy,matplotlib,seaborn,requests,and mysql.connector
-- Run the all TASKS using-
-- pd.read_csv.
-- pd.read_json.
-- mysql.connector.connect
-& etc.
-- print(response)
-- sns.hist,bar,box,line,heatmapplot().etc
+# Task:-9 Pipeline Benefits(Conceptual)
+# 1.Importance of pipeline
+- Pipeline make the whole machine learning process organized.they connect steps like data cleaning,feature selection, and model training into one flow.This saves time and reduces mistakes. 
+- Pipeline helps to chain together multiple steps,such that output data--->Imputing----> Encoding ---->Feature Scaling.
+# 2.Problem solving pipeline
+- Doing the same steps again and again manually.
+- Forgetting or mixing up peprocessing steps.
+- Making sure training and testing dat are processed in the same way.
+# 3. Difference b/w manual and pipeline based preprocessing
+- MANUAL PREPROCESSING-Cleaning and transforming data step by step by self,easy to make mistakes or forget steps.
+- PIPELINE PREPROCESSING- Steps are defined once in the pipeline.every time data goes through,the same process is applied automatically.its consistent and less error-prone 
